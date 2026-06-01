@@ -24,12 +24,15 @@ export default function Waitlist() {
       return
     }
     const existing = document.querySelector(`script[src="${TALLY_SRC}"]`)
-    if (existing) return
+    if (existing) {
+      existing.addEventListener('load', () => window.Tally?.loadEmbeds())
+      return
+    }
     const s = document.createElement('script')
     s.src = TALLY_SRC
     s.onload = () => window.Tally?.loadEmbeds()
     document.body.appendChild(s)
-  }, [])
+  }, [mounted])
 
   return (
     <section id="waitlist" className="relative py-28 overflow-hidden">
