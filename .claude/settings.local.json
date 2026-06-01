@@ -4,7 +4,8 @@
       "Bash(npm install *)",
       "Bash(Remove-Item -Recurse -Force node_modules)",
       "Bash(Remove-Item -Force package-lock.json)",
-      "Bash(Write-Host \"Cleaned\")"
+      "Bash(Write-Host \"Cleaned\")",
+      "Bash(npm run *)"
     ]
   }
 }

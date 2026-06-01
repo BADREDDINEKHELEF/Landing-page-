@@ -51,7 +51,7 @@ export default function FinalCTA() {
 
           <motion.button
             onClick={scrollToWaitlist}
-            whileHover={{ scale: 1.04, brightness: 1.1 }}
+            whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-2.5 font-extrabold px-12 py-5 rounded-full text-lg text-[#0F0E1A] transition-all duration-200"
             style={{
