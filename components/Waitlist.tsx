@@ -1,38 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
-declare global {
-  interface Window {
-    Tally?: { loadEmbeds: () => void }
-  }
-}
-
 export default function Waitlist() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  useEffect(() => {
-    if (!mounted) return
-    const TALLY_SRC = 'https://tally.so/widgets/embed.js'
-    if (typeof window.Tally !== 'undefined') {
-      window.Tally.loadEmbeds()
-      return
-    }
-    const existing = document.querySelector(`script[src="${TALLY_SRC}"]`)
-    if (existing) {
-      existing.addEventListener('load', () => window.Tally?.loadEmbeds())
-      return
-    }
-    const s = document.createElement('script')
-    s.src = TALLY_SRC
-    s.onload = () => window.Tally?.loadEmbeds()
-    document.body.appendChild(s)
-  }, [mounted])
 
   return (
     <section id="waitlist" className="relative py-28 overflow-hidden">
@@ -109,22 +79,15 @@ export default function Waitlist() {
             boxShadow: '0 0 60px rgba(155,43,224,0.12), 0 24px 60px rgba(0,0,0,0.4)',
           }}
         >
-          {mounted ? (
-            <iframe
-              data-tally-src="https://tally.so/embed/1A6RPL?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-              loading="lazy"
-              width="100%"
-              height="200"
-              frameBorder={0}
-              marginHeight={0}
-              marginWidth={0}
-              title="Liste d'attente Outfity"
-              className="w-full"
-              style={{ minHeight: '180px' }}
-            />
-          ) : (
-            <div className="w-full" style={{ minHeight: '180px' }} />
-          )}
+          <iframe
+            src="https://tally.so/embed/1A6RPL?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy"
+            width="100%"
+            height="280"
+            frameBorder={0}
+            title="Liste d'attente Outfity"
+            className="w-full"
+          />
 
           <div className="flex items-center justify-center gap-1.5 mt-5">
             <span className="text-sm">🔒</span>
